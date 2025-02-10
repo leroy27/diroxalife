@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <!-- Metadados anteriores mantidos -->
+    <style>
+        /* Novos estilos adicionados */
+        .team-section {
+            padding: 3rem;
+            background: #1a1a1a;
+            text-align: center;
+        }
+
+        .member-card {
+            background: rgba(255,255,255,0.1);
+            padding: 1.5rem;
+            margin: 1rem;
+            border-radius: 10px;
+            transition: transform 0.3s;
+        }
+
+        .member-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .member-card img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            margin-bottom: 1rem;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
+        }
+
+        .diroxinha-chat {
+            animation: float 3s ease-in-out infinite;
+            box-shadow: 0 0 20px var(--primary-color);
+        }
+
+        .diroxinha-chat:hover {
+            animation-play-state: paused;
+        }
+    </style>
+</head>
+<body>
+    <!-- Seção da Equipe adicionada -->
+    <section class="team-section">
+        <h2>A CREW DIROXALIFE</h2>
+        <div class="team-grid">
+            <div class="member-card">
+                <h3>Leroy (@Leroy_maverick)</h3>
+                <p>O visionário das manobras impossíveis! Mestre em flip tricks e coordenador geral da crew.</p>
+                <a href="https://instagram.com/Leroy_maverick" target="_blank"><i class="fab fa-instagram"></i></a>
+            </div>
+            
+            <div class="member-card">
+                <h3>Vitor (@utivskt)</h3>
+                <p>O speed racer da pista! Especialista em downhill e responsável pelas conexões internacionais.</p>
+                <a href="https://instagram.com/utivskt" target="_blank"><i class="fab fa-instagram"></i></a>
+            </div>
+
+            <div class="member-card">
+                <h3>Erick (@erikt_ink)</h3>
+                <p>Artista das rodinhas! Combina tatuagem, street art e skate numa vibe única.</p>
+                <a href="https://instagram.com/erikt_ink" target="_blank"><i class="fab fa-instagram"></i></a>
+            </div>
+
+            <div class="member-card">
+                <h3>Maçã (@pedroh_mskt)</h3>
+                <p>O wild card das ruas! Mestre das bancadas e coringa nas filmagens épicas.</p>
+                <a href="https://instagram.com/pedroh_mskt" target="_blank"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Chat modificado -->
+    <div class="diroxinha-chat" id="chatBot">
+        <div class="chat-header">
+            <h3>🛹 DIROXINHA 🤖 <button onclick="toggleChat()" style="float:right;">X</button></h3>
+        </div>
+        <div id="chat-messages" style="height:200px; overflow-y:auto; padding:1rem;">
+            <p>E aí, skate lover! 👋<br>To aqui pra te ajudar com:<br>
+            🎥 Vídeos novos<br>
+            🏆 Eventos<br>
+            🛍 Novos produtos<br>
+            Manda ver!</p>
+        </div>
+        <input type="text" id="user-input" placeholder="Pergunta aí..." 
+               style="width:100%; padding:1rem; border:none; background:#333; color:white;"
+               onkeypress="if(event.key === 'Enter') chatWithDiroxinha()">
+    </div>
+
+    <script>
+        // Atualizações no JavaScript
+        let isMoving = false;
+
+        function makeDiroxinhaFloat() {
+            const chat = document.getElementById('chatBot');
+            if(!isMoving) {
+                chat.style.transform = `translateY(${Math.random()*20 - 10}px)`;
+                setTimeout(makeDiroxinhaFloat, 3000);
+            }
+        }
+
+        function toggleChat() {
+            const chat = document.getElementById('chatBot');
+            chat.style.display = chat.style.display === 'none' ? 'block' : 'none';
+            if(chat.style.display === 'block') {
+                isMoving = false;
+                chat.style.animation = 'pulse 2s infinite';
+            } else {
+                isMoving = true;
+                makeDiroxinhaFloat();
+            }
+        }
+
+        // Inicia animação
+        makeDiroxinhaFloat();
+
+        // Adicione estas animações no CSS
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+    </script>
+</body>
+</html>

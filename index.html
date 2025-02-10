@@ -3,280 +3,270 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DIROXALIFE | Skate Culture Evolution</title>
+    <title>DIROXALIFE | Premium Skate Culture</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300;600;900&display=swap" rel="stylesheet">
     <style>
         :root {
-            --neon-cyan: #00f3ff;
-            --neon-purple: #bc13fe;
-            --deep-space: #0a0a1a;
-            --stardust: rgba(255,255,255,0.1);
+            --primary: #1A1A1A;
+            --accent: #E63946;
+            --text: #F1FAEE;
+            --gradient: linear-gradient(135deg, #2A2A2A 0%, #1A1A1A 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
 
         body {
-            font-family: 'Orbitron', 'Arial Narrow', sans-serif;
-            background: var(--deep-space);
-            color: white;
-            margin: 0;
+            font-family: 'Exo 2', sans-serif;
+            background: var(--primary);
+            color: var(--text);
             overflow-x: hidden;
         }
 
-        /* Novos Elementos de Navegação */
-        .top-header {
+        /* --- Navigation System 2.0 --- */
+        .master-nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(26,26,26,0.98);
+            backdrop-filter: blur(15px);
+            z-index: 1000;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .nav-container {
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding: 1rem 5%;
-            background: rgba(10,10,26,0.95);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid var(--neon-cyan);
         }
 
-        .logo {
+        .brand-logo {
             font-size: 2rem;
-            text-shadow: 0 0 15px var(--neon-purple);
+            font-weight: 900;
+            background: linear-gradient(45deg, #E63946, #FF7F50);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
-        .search-bar {
-            padding: 0.8rem;
-            border-radius: 25px;
-            background: rgba(255,255,255,0.1);
-            border: 1px solid var(--neon-cyan);
+        .main-menu {
+            display: flex;
+            gap: 2rem;
         }
 
-        .cyber-nav {
-            display: grid;
-            grid-template-columns: repeat(5, 1fr);
-            text-align: center;
-            margin: 2rem 5%;
-            border: 1px solid var(--neon-purple);
-            border-radius: 15px;
+        .nav-item {
+            position: relative;
+            padding: 1rem 0;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .nav-item::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: var(--accent);
+            transition: 0.3s;
+        }
+
+        .nav-item:hover::after {
+            width: 100%;
+        }
+
+        /* --- Hero Section Cinematic --- */
+        .hero-container {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
             overflow: hidden;
         }
 
-        .cyber-nav a {
-            padding: 1.5rem;
-            position: relative;
-            transition: 0.4s;
+        .hero-video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            min-width: 100%;
+            min-height: 100%;
+            z-index: -1;
+            opacity: 0.4;
         }
 
-        /* Seção da Equipe Aprimorada */
-        .team-grid {
+        .hero-content {
+            text-align: center;
+            padding: 2rem;
+        }
+
+        /* --- Media Gallery Grid --- */
+        .media-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
             padding: 5%;
-        }
-
-        .founder-card {
             position: relative;
-            border: 2px solid var(--neon-cyan);
-            border-radius: 15px;
+        }
+
+        .media-card {
+            position: relative;
             overflow: hidden;
-            transform-style: preserve-3d;
+            border-radius: 15px;
             transition: 0.5s;
+            aspect-ratio: 16/9;
         }
 
-        .founder-card::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(45deg, transparent 50%, var(--neon-purple));
-            z-index: 1;
+        .media-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
         }
 
-        .founder-card:hover {
-            transform: perspective(1000px) rotateY(15deg);
+        .media-card iframe,
+        .media-card video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
 
-        .co-founder-badge {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            background: var(--neon-purple);
-            padding: 0.5rem 1rem;
-            border-radius: 5px;
-            font-size: 0.8rem;
-        }
-
-        /* DIROXINHA 2.0 */
-        .diroxinha-container {
+        /* --- AI Assistant 3.0 --- */
+        .diroxinha-ai {
             position: fixed;
-            bottom: 30px;
-            right: 30px;
+            bottom: 2rem;
+            right: 2rem;
             z-index: 1000;
             transition: 0.5s;
         }
 
-        .diroxinha-avatar {
+        .ai-avatar {
             width: 80px;
             height: 80px;
-            background: url('diroxinha-avatar.png') center/cover;
+            background: url('ai-avatar.png') center/cover;
+            border-radius: 50%;
             cursor: pointer;
-            animation: neonFloat 3s ease-in-out infinite;
-            filter: drop-shadow(0 0 10px var(--neon-cyan));
+            box-shadow: 0 0 30px rgba(230,57,70,0.5);
+            animation: pulse 2s infinite;
         }
 
-        .diroxinha-chat {
+        .ai-interface {
             position: absolute;
-            bottom: 100px;
+            bottom: 100%;
             right: 0;
-            width: 350px;
-            background: rgba(10,10,26,0.95);
-            border: 1px solid var(--neon-cyan);
+            width: 400px;
+            background: rgba(30,30,30,0.95);
+            backdrop-filter: blur(20px);
             border-radius: 20px;
-            backdrop-filter: blur(10px);
-            transform: scale(0);
-            transform-origin: bottom right;
-            transition: 0.3s;
+            padding: 2rem;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: 0.5s;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
         }
 
-        .chat-active {
-            transform: scale(1);
+        .ai-active .ai-interface {
+            opacity: 1;
+            transform: translateY(0);
         }
 
-        @keyframes neonFloat {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-20px); }
-        }
-
-        /* Efeitos Visuais Avançados */
-        .cyber-glow {
-            text-shadow: 0 0 10px var(--neon-cyan),
-                         0 0 20px var(--neon-purple);
-        }
-
-        .holographic-border {
-            border: 1px solid transparent;
-            background: linear-gradient(var(--deep-space), var(--deep-space)) padding-box,
-                        linear-gradient(45deg, var(--neon-cyan), var(--neon-purple)) border-box;
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
         }
     </style>
 </head>
 <body>
-    <header class="top-header holographic-border">
-        <div class="logo cyber-glow">DIROXALIFE</div>
-        <input type="text" class="search-bar" placeholder="Buscar no universo DIROXALIFE...">
-        <nav class="social-links">
-            <a href="#"><i class="fab fa-instagram"></i></a>
-            <a href="#"><i class="fab fa-youtube"></i></a>
-        </nav>
-    </header>
-
-    <nav class="cyber-nav holographic-border">
-        <a href="#videos">Galáxia de Vídeos</a>
-        <a href="#crew">Nossa Crew</a>
-        <a href="#events">Eventos Estelares</a>
-        <a href="#shop">Loja Orbital</a>
-        <a href="#contact">Transmissão Direta</a>
+    <!-- Navigation System -->
+    <nav class="master-nav">
+        <div class="nav-container">
+            <div class="brand-logo">DIROXALIFE</div>
+            <div class="main-menu">
+                <div class="nav-item">Mídia</div>
+                <div class="nav-item">Crew</div>
+                <div class="nav-item">Eventos</div>
+                <div class="nav-item">Shop</div>
+                <div class="nav-item">Contato</div>
+            </div>
+        </div>
     </nav>
 
-    <section class="team-grid" id="crew">
-        <!-- Destaque para Co-Fundadores -->
-        <div class="founder-card">
-            <div class="co-founder-badge">Co-Fundador</div>
-            <div class="member-info">
-                <h3>Vitor (@utivskt)</h3>
-                <p>Arquiteto da Revolução Sobre Rodas</p>
-                <p>Visionário que fundou o núcleo da DIROXALIFE em 2018, transformando paixão em movimento global.</p>
-            </div>
-        </div>
-
-        <div class="founder-card">
-            <div class="co-founder-badge">Co-Fundador</div>
-            <div class="member-info">
-                <h3>Erick (@erikt_ink)</h3>
-                <p>Alquimista da Cultura Urbana</p>
-                <p>Uniu tatuagem, skate e arte digital criando a identidade visual única da marca.</p>
-            </div>
-        </div>
-
-        <!-- Outros membros -->
-        <div class="member-card">
-            <h3>Leroy (@Leroy_maverick)</h3>
-            <p>Engenheiro de Manobras Impossíveis</p>
-        </div>
-
-        <div class="member-card">
-            <h3>Maçã (@pedroh_mskt)</h3>
-            <p>Embaixador das Ruas</p>
+    <!-- Cinematic Hero Section -->
+    <section class="hero-container">
+        <video class="hero-video" autoplay muted loop>
+            <source src="hero-trailer.mp4" type="video/mp4">
+        </video>
+        <div class="hero-content">
+            <h1>REDEFININDO A CULTURA DO SKATE</h1>
+            <p>Desde 2018 criando conteúdo que move multidões</p>
         </div>
     </section>
 
-    <!-- DIROXINHA 2.0 -->
-    <div class="diroxinha-container">
-        <div class="diroxinha-avatar" onclick="toggleDiroxinha()"></div>
-        <div class="diroxinha-chat">
-            <div class="chat-header">
-                <h3>DIROXINHA AI v2.3</h3>
-                <div class="status-dot"></div>
-            </div>
-            <div class="chat-messages">
-                <div class="ai-message">
-                    <p>E aí, cosmonauta do skate! 🚀<br>
-                    Posso te ajudar com:<br>
-                    • Agenda de eventos<br>
-                    • Tutoriais exclusivos<br>
-                    • Behind the scenes<br>
-                    Manda tua pergunta aí!</p>
-                </div>
-            </div>
-            <div class="chat-input">
-                <input type="text" placeholder="Digite seu comando...">
-                <button class="neon-button">Enviar</button>
+    <!-- Dynamic Media Grid -->
+    <section class="media-grid">
+        <!-- YouTube Video -->
+        <div class="media-card">
+            <iframe src="https://www.youtube.com/embed/SEU_VIDEO_ID" 
+                    frameborder="0" 
+                    allow="accelerometer; autoplay; encrypted-media; gyroscope" 
+                    allowfullscreen></iframe>
+        </div>
+
+        <!-- Instagram Video -->
+        <div class="media-card">
+            <video controls>
+                <source src="instagram-video.mp4" type="video/mp4">
+            </video>
+        </div>
+        
+        <!-- Adicione mais mídias -->
+    </section>
+
+    <!-- Advanced AI Assistant -->
+    <div class="diroxinha-ai">
+        <div class="ai-avatar"></div>
+        <div class="ai-interface">
+            <h3>DIROXINHA AI</h3>
+            <div class="chat-container">
+                <!-- Integração com ChatGPT aqui -->
             </div>
         </div>
     </div>
 
     <script>
-        // DIROXINHA Interativo
-        let diroxinhaActive = false;
+        // AI Interaction System
+        const aiAssistant = document.querySelector('.diroxinha-ai');
+        let aiActive = false;
 
-        function toggleDiroxinha() {
-            const chat = document.querySelector('.diroxinha-chat');
-            diroxinhaActive = !diroxinhaActive;
-            chat.classList.toggle('chat-active', diroxinhaActive);
-            
-            if(diroxinhaActive) {
-                startPersonalityAnimation();
-            }
-        }
+        aiAssistant.addEventListener('click', () => {
+            aiActive = !aiActive;
+            aiAssistant.classList.toggle('ai-active', aiActive);
+        });
 
-        function startPersonalityAnimation() {
-            const messages = [
-                "Tô gravando um flip 1440° enquanto respondo!",
-                "Você sabia? Nosso primeiro skate foi feito com madeira lunar!",
-                "Dica: Aperte Shift+Space para ver um easter egg!"
-            ];
+        // Dynamic Video Loading
+        const loadContent = async () => {
+            // Implementar carregamento dinâmico de conteúdo
+        };
 
-            setInterval(() => {
-                if(Math.random() > 0.7) {
-                    showPersonalityMessage(messages[Math.floor(Math.random()*messages.length)]);
-                }
-            }, 10000);
-        }
+        // Smooth Scroll Navigation
+        document.querySelectorAll('.nav-item').forEach(item => {
+            item.addEventListener('click', e => {
+                e.preventDefault();
+                const section = document.querySelector(e.target.getAttribute('href'));
+                section.scrollIntoView({ behavior: 'smooth' });
+            });
+        });
 
-        function showPersonalityMessage(message) {
-            const chatBox = document.querySelector('.chat-messages');
-            const msgElement = document.createElement('div');
-            msgElement.className = 'ai-message';
-            msgElement.innerHTML = <p>${message}</p>;
-            chatBox.appendChild(msgElement);
-        }
-
-        // Efeito de Digitação
-        function typeWriter(element, text, speed = 50) {
-            let i = 0;
-            element.innerHTML = '';
-            function type() {
-                if (i < text.length) {
-                    element.innerHTML += text.charAt(i);
-                    i++;
-                    setTimeout(type, speed);
-                }
-            }
-            type();
-        }
+        // Video Hover Effects
+        document.querySelectorAll('.media-card').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.querySelector('iframe').contentWindow.postMessage('{"event":"command","func":"playVideo","args":""}', '*');
+            });
+        });
     </script>
 </body>
 </html>
